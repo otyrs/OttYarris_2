@@ -212,6 +212,11 @@
             });
         }
      window.addEventListener('load', waitForMediaLoad);
+     setTimeout(() => {
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 5000);
 
     </script>
 </body>
