@@ -13,6 +13,11 @@ body {
     color: black;
     margin: 0;
     font-size: 12px;
+    overflow-x: hidden;
+}
+
+strong {
+    font-weight: 400;
 }
 
 h1,
@@ -22,25 +27,51 @@ h4,
 h5,
 h6 {
     font-family: 'Swear Text Medium', 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 100;
+    font-weight: bold;
 }
 
 .navbar {
     background-color: transparent;
 }
 
-strong {
-    font-weight: 400;
-}
-
 .navbar-brand img {
     height: 40px;
 }
 
-.nav-link {
-    color: black !important;
-    font-size: 12px;
+.navbar-toggler {
+    z-index: 1000 !important;
+    /* メニューより前面 */
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    display: block !important;
+    pointer-events: auto !important;
+    cursor: pointer;
+    touch-action: manipulation;
+    padding: 15px;
+    position: relative;
+}
+
+.navbar-collapse {
+    background: rgba(255, 255, 255, 0);
+    transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(0px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: start;
+    padding-top: 80px;
+    display: none !important;
+    z-index: 999;
+    /* トグルボタンより下、ローディング画面より下 */
+}
+
+.navbar-collapse.show {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    display: flex !important;
 }
 
 .navbar-nav {
@@ -49,28 +80,56 @@ strong {
     margin-right: 2rem;
 }
 
-
-.navbar-toggler {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
+.nav-link {
+    color: black !important;
+    font-size: 12px;
+    transition: none !important;
+    pointer-events: auto !important;
+    cursor: pointer;
+    touch-action: manipulation;
+    z-index: 1000;
+    padding: 10px;
 }
 
-.navbar-collapse.show {
-    z-index: 20 !important;
-    position: absolute !important;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    background: white;
-    align-items: start;
-    padding-top: 80px;
-    transition: background 0.2s;
+.center-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 中央に配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    /* 幅を100pxに設定 */
+    height: auto;
+    /* 高さは自動調整 */
 }
 
-.archive_yt{
-    margin-top: -0.8rem;
+.statement-section {
+    max-width: 700px;
+    margin: 80px auto 80px auto;
+    font-size: 9px;
+    padding: 0px 40px;
+}
+
+.statement-section h1 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.statement-section p {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+#clegit {
+    text-align: left;
+    font-size: 0.7rem;
+    line-height: 1.5;
 }
 
 .archive-section {
@@ -80,7 +139,6 @@ strong {
 }
 
 .archive-section h2 {
-
     font-size: 1.4rem;
     text-align: center;
     margin-top: 2rem;
@@ -130,27 +188,29 @@ strong {
     text-align: center;
     opacity: 0.6;
     padding: 10px 0;
-    background-color: white;
 }
 
 #loading-overlay {
+    display: flex;
     position: fixed;
-    z-index: 9999;
-    background: white;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
     flex-direction: column;
-    font-size: 1.2rem;
-    font-family: 'IBM Plex Mono', sans-serif;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 #loading-overlay img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 1rem;
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+#loading-overlay.hide {
+    opacity: 0;
 }
