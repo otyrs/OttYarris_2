@@ -67,16 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function hideLoadingOverlay() {
     const overlay = document.getElementById('loading-overlay');
     if (!overlay) {
-        // overlayがない場合でもbodyのoverflowを解除
         document.body.style.overflow = '';
         return;
     }
-
-    overlay.classList.add('hide');
-    document.body.style.overflow = ''; // 即座にスクロールを有効化
-    setTimeout(() => {
-        overlay.style.display = 'none';
-    }, 300); // アニメーション後に非表示（3秒は長すぎる）
+    overlay.style.display = 'none'; // アニメーションなしで即非表示
+    document.body.style.overflow = ''; // スクロール有効化
 }
 
 function waitForMediaLoad() {
@@ -84,11 +79,13 @@ function waitForMediaLoad() {
     const videos = Array.from(document.querySelectorAll('video'));
     const total = images.length + videos.length;
     let loaded = 0;
+    let overlayHidden = false;
 
     function checkDone() {
         loaded++;
-        if (loaded >= total) {
+        if (!overlayHidden && loaded >= total) {
             hideLoadingOverlay();
+            overlayHidden = true;
         }
     }
 
@@ -100,7 +97,7 @@ function waitForMediaLoad() {
     document.body.style.overflow = 'hidden';
 
     images.forEach(img => {
-        if (img.complete && img.naturalWidth !== 0) { // キャッシュ済み画像の確認
+        if (img.complete && img.naturalWidth !== 0) {
             checkDone();
         } else {
             img.addEventListener('load', checkDone, { once: true });
@@ -116,9 +113,18 @@ function waitForMediaLoad() {
             video.addEventListener('error', checkDone, { once: true });
         }
     });
+
+    // 最大5秒で強制解除
+    setTimeout(() => {
+        if (!overlayHidden) {
+            hideLoadingOverlay();
+            overlayHidden = true;
+        }
+    }, 5000);
 }
 
-// フォールバック: 3秒で強制解除（5秒は長めなので短縮）
-setTimeout(() => {
-    hideLoadingOverlay();
-}, 3000);
+// DOMContentLoadedでwaitForMediaLoadを呼び出す
+document.addEventListener('DOMContentLoaded', () => {
+    initNavbarToggle();
+    waitForMediaLoad();
+});
