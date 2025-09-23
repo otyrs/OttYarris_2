@@ -8,16 +8,16 @@
 
     <!-- drawer.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="/assets/img/ott_web/logo.png">
+    <link rel="icon" type="image/png" href="../assets/img/ott_web/logo.png">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             <h2>Ott Yarris -Pyramid Reverb-</h2>
 
             <div class="imgbox">
-                <img src="/assets/img/ott_web/Ott_Yarris.png" alt="Ott Yarris メイン画像" class="archive_img img-fluid">
+                <img src="../assets/img/ott_web/Ott_Yarris.png" alt="Ott Yarris メイン画像" class="archive_img img-fluid">
             </div>
 
             <div class="mb-3">
@@ -71,7 +71,7 @@
 
             </div>
 
-            <p>“Ott Yarris-Pyramid Reverb-”が10月10日(金)に北海道札幌市のモエレ沼公園ガラスのピラミッドで開催される。</p>
+            <p>"Ott Yarris-Pyramid Reverb-"が10月10日(金)に北海道札幌市のモエレ沼公園ガラスのピラミッドで開催される。</p>
 
             <div class="ratio ratio-16x9 mb-3">
                 <iframe src="https://www.youtube.com/embed/3bqUZ9ylx7Y" title="YouTube video" allowfullscreen></iframe>
@@ -139,25 +139,32 @@
 
     <div id="footer"></div>
 
+    <script src="../js/header.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const loadHtmlComponent = (id, url) => {
+            const loadHtmlComponent = (id, url, callback) => {
                 fetch(url)
                     .then(r => r.text())
                     .then(html => {
                         const el = document.getElementById(id);
-                        if (el) el.innerHTML = html;
+                        if (el) {
+                            el.innerHTML = html;
+                            if (typeof callback === "function") callback();
+                        }
                     })
                     .catch(err => console.error(err));
             };
 
-            loadHtmlComponent("header", "../partials/header.html");
+            // headerを読み込んでからinitHeader関数を実行
+            loadHtmlComponent("header", "../partials/header.html", () => {
+                if (typeof initHeader === "function") {
+                    initHeader();
+                }
+            });
             loadHtmlComponent("footer", "../partials/footer.html");
         });
     </script>
-
-<script src="/js/index.js"></script>
-<script src="/js/header.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
