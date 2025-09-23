@@ -211,3 +211,13 @@ h6 {
 #loading-overlay.hide {
     opacity: 0;
 }
+
+
+/* Google翻訳のUIを非表示にする */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
