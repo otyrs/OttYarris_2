@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- URL と HTML ファイルのマッピング ---
     const mainRoutes = {
-        "/": "./partials/main.html",
-        "/index.html": "./partials/main.html",
+        "/": "",
+        "/index.html": "",
         "/pages/about.html": "./pages/about.html"
         // OYページは動的に対応
     };
@@ -42,8 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- メインコンテンツ読み込み関数 ---
     const loadMainContent = (url) => {
         url = url.toLowerCase(); // 小文字統一
-        const componentUrl = mainRoutes[url] || getOYPageUrl(url) || "./partials/main.html";
-        loadHtmlComponent("main", componentUrl);
+        const componentUrl = mainRoutes[url] || getOYPageUrl(url);
+        if (componentUrl) {
+            loadHtmlComponent("main", componentUrl);
+        }
     };
 
     // --- 初期ロード ---
