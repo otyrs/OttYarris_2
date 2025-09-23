@@ -139,34 +139,9 @@
 
     <div id="footer"></div>
 
-    <script src="./js/header.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const loadHtmlComponent = (id, url, callback) => {
-                fetch(url)
-                    .then(r => r.text())
-                    .then(html => {
-                        const el = document.getElementById(id);
-                        if (el) {
-                            el.innerHTML = html;
-                            if (typeof callback === "function") callback();
-                        }
-                    })
-                    .catch(err => console.error(err));
-            };
-
-            // headerを読み込んでからinitHeader関数を実行
-            loadHtmlComponent("header", "./partials/header.html", () => {
-                if (typeof initHeader === "function") {
-                    initHeader();
-                }
-            });
-            loadHtmlComponent("footer", "./partials/footer.html");
-        });
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/header.js"></script>
 
 </body>
 
