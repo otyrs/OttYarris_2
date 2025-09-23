@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // --- 共通パーツを読み込む ---
-    loadHtmlComponent("header", "./partials/header.html", () => {
+    loadHtmlComponent("header", "partials/header.html", () => {
         if (typeof initHeader === "function") initHeader();
     });
-    loadHtmlComponent("footer", "./partials/footer.html");
+    loadHtmlComponent("footer", "partials/footer.html");
 
     // --- URL と HTML ファイルのマッピング ---
     const mainRoutes = {
