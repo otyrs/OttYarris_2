@@ -2,18 +2,24 @@
 
 @font-face {
     font-family: 'Swear Text Medium';
-    src: url('font/fonnts.com-Swear-Text-Medium.otf') format('opentype');
+    src: url('/font/fonnts.com-Swear-Text-Medium.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
-body {
-    font-family: 'IBM Plex Mono', sans-serif;
+body  {
     background-color: white;
     color: black;
     margin: 0;
     font-size: 12px;
     overflow-x: hidden;
+}
+
+li{
+    font-family: 'IBM Plex Sans', IBM, monospace;
+}
+p{
+    font-family: 'IBM Plex Sans', IBM, monospace;
 }
 
 strong {
@@ -30,87 +36,11 @@ h6 {
     font-weight: bold;
 }
 
-.navbar {
-    background-color: transparent;
-}
-
-.navbar-brand img {
-    height: 40px;
-}
-
-.navbar-toggler {
-    z-index: 1000 !important;
-    /* メニューより前面 */
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    display: block !important;
-    pointer-events: auto !important;
-    cursor: pointer;
-    touch-action: manipulation;
-    padding: 15px;
-    position: relative;
-}
-
-.navbar-collapse {
-    background: rgba(255, 255, 255, 0);
-    transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(0px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    align-items: start;
-    padding-top: 80px;
-    display: none !important;
-    z-index: 999;
-    /* トグルボタンより下、ローディング画面より下 */
-}
-
-.navbar-collapse.show {
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(8px);
-    display: flex !important;
-}
-
-.navbar-nav {
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 2rem;
-}
-
-.nav-link {
-    color: black !important;
-    font-size: 12px;
-    transition: none !important;
-    pointer-events: auto !important;
-    cursor: pointer;
-    touch-action: manipulation;
-    z-index: 1000;
-    padding: 10px;
-}
-
-.center-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* 中央に配置 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    /* 幅を100pxに設定 */
-    height: auto;
-    /* 高さは自動調整 */
-}
-
 .statement-section {
     max-width: 700px;
-    margin: 80px auto 80px auto;
+    margin: 40px auto 80px auto;
     font-size: 9px;
-    padding: 0px 40px;
+    padding: 0px 30px;
 }
 
 .statement-section h1 {
@@ -129,7 +59,6 @@ h6 {
 #clegit {
     text-align: left;
     font-size: 0.8rem;
-    line-height: 1.5;
 }
 
 .archive-section {
