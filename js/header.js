@@ -35,19 +35,3 @@ function initHeader() {
         document.body.style.overflow = '';
     }
 }
-
-// header.htmlの内容を絶対パスで読み込み、階層に関係なく正しいパスを使用
-fetch('/header.html')
-    .then(response => response.text())
-    .then(data => {
-        // パス内の相対パスを絶対パスに変換
-        const processedData = data
-            .replace(/href="css\//g, 'href="/css/')
-            .replace(/src="js\//g, 'src="/js/')
-            .replace(/src="assets\//g, 'src="/assets/')
-            .replace(/href="pages\//g, 'href="/pages/')
-            .replace(/href="index\.html"/g, 'href="/index.html"');
-        
-        document.getElementById('header').innerHTML = processedData;
-    })
-    .catch(error => console.error('Header loading error:', error));
