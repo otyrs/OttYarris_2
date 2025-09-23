@@ -1,0 +1,18 @@
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: auto;
+}
+
+main{
+    margin-top:0px;
+}
+
+iframe{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
