@@ -68,13 +68,11 @@ header {
     width: 100%;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.2);
-
     backdrop-filter: blur(10px);
-
     -webkit-backdrop-filter: blur(10px);
-
     visibility: hidden;
     opacity: 0;
+    pointer-events: none;
     transition: all 1.2s;
     z-index: 900;
 }
@@ -82,6 +80,7 @@ header {
 .nav-overlay.active {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
 }
 
 .nav-overlay__content {
