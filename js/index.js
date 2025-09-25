@@ -18,11 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(err => console.error(err));
     };
 
-    // --- 共通パーツを読み込む ---
-    loadHtmlComponent("header", "partials/header.html", () => {
-        if (typeof initHeader === "function") initHeader();
-    });
-    loadHtmlComponent("footer", "partials/footer.html");
+    // --- 共通パーツの読み込みは各HTMLファイルで直接埋め込み済みのため削除 ---
+    // headerとfooterは各HTMLファイルに直接記述済み
 
     // --- URL と HTML ファイルのマッピング ---
     const mainRoutes = {
