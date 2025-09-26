@@ -16,3 +16,10 @@ iframe{
     margin-bottom: 10px;
     width: 100%;
 }
+
+/* アーカイブ画像の統一サイズ */
+.imgbox_01 .archive_img {
+    width:120px;
+    height: auto;
+    object-fit: cover;
+}
