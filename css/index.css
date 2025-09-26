@@ -16,9 +16,7 @@ body {
     overflow-x: hidden;
 }
 
-strong {
-    font-weight: 400;
-}
+
 
 ul {
     font-family: 'IBM Plex Mono', sans-serif;
@@ -159,12 +157,15 @@ h6 {
 .archive-section h2 {
     font-size: 1.4rem;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: -40px;
     margin-bottom: -1.3rem;
     font-weight: bold;
 }
 
 @media (max-width: 600px) {
+    .archive-section h2 {
+        margin-bottom: -1.4rem;
+    }
     .archive-section h2 {
         margin-bottom: -1.4rem;
     }

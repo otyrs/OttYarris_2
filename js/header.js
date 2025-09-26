@@ -26,6 +26,14 @@ function initHeader() {
         }
     });
 
+    // --- リンク以外の領域をクリックした時にメニューを閉じる ---
+    nav.addEventListener('click', (e) => {
+        // クリックされた要素がリンク（a要素）でない場合、メニューを閉じる
+        if (e.target.tagName !== 'A' && nav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
     // --- メニューを閉じる関数 ---
     function closeMenu() {
         hamburger.classList.remove('active');
